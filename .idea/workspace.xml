@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d852abe8-d0e6-4146-8da1-b0a5087e0f86" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="d852abe8-d0e6-4146-8da1-b0a5087e0f86" name="Default" comment="Initialize structure">
+      <change type="DELETED" beforePath="H:\bakery\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="H:\bakery\.idea\compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="H:\bakery\.idea\copyright\profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="H:\bakery\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="H:\bakery\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="H:\bakery\.idea\uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="H:\bakery\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="H:\bakery\.idea\workspace.xml" afterPath="" />
     </list>
     <ignored path="bakery.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +33,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BakeryApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BakeryApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/BakeryApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14214046">
+            <state vertical-scroll-proportion="0.0">
               <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3411371">
+              <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -479,7 +496,7 @@
       <created>1573033454809</created>
       <option name="number" value="Default" />
       <updated>1573033454809</updated>
-      <workItem from="1573033459985" duration="1980000" />
+      <workItem from="1573033459985" duration="2316000" />
     </task>
     <task id="LOCAL-00001" summary="Initialize structure">
       <created>1573035420351</created>
@@ -487,11 +504,23 @@
       <option name="project" value="LOCAL" />
       <updated>1573035420351</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initialize structure">
+      <created>1573035445775</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573035445775</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add gitignore">
+      <created>1573035597862</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573035597862</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1980000" />
+    <option name="totallyTimeSpent" value="2316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
@@ -528,7 +557,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialize structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialize structure" />
+    <MESSAGE value="Add gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -545,8 +575,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/BakeryApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14214046">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3411371">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
           <folding />
         </state>
       </provider>
