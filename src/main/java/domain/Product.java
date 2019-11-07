@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Fazel on 11/6/2019.
@@ -15,6 +16,10 @@ public class Product {
         this.name = name;
         this.code = code;
         this.packs = packs;
+    }
+
+    public Product(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -39,5 +44,14 @@ public class Product {
 
     public void setPacks(List<Pack> packs) {
         this.packs = packs;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", packs=" + packs +
+                '}';
     }
 }

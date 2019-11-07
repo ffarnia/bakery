@@ -6,28 +6,17 @@ import java.util.List;
  * Created by Fazel on 11/6/2019.
  */
 public class Order {
+    private List<OrderItem> orderItems;
 
-    private Integer amout;
-    private Product product;
-
-    public Order(Integer amout, Product product) {
-        this.amout = amout;
-        this.product = product;
+    public Order(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
-    public Integer getAmout() {
-        return amout;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setAmout(Integer amout) {
-        this.amout = amout;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }

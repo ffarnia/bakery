@@ -1,6 +1,9 @@
 package domain;
 
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -8,21 +11,28 @@ import java.util.Set;
  */
 public class Invoice {
 
-    private BigDecimal totalAmount;
+    private Integer totalAmount;
     private Product product;
-    private Set<Pack> packs;
+    private List<Pack> packs;
 
-    public Invoice(BigDecimal totalAmount, Product product, Set<Pack> packs) {
+    public Invoice(Integer totalAmount, Product product) {
         this.totalAmount = totalAmount;
         this.product = product;
-        this.packs = packs;
     }
 
-    public BigDecimal getTotalAmount() {
+    public void generateInvoice(Order order,Product product) {
+        List<OrderItem> orderItems =  order.getOrderItems();
+        for (OrderItem orderItem : orderItems) {
+            int amount = orderItem.getAmout();
+
+        }
+    }
+
+    public Integer getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(Integer totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -34,11 +44,11 @@ public class Invoice {
         this.product = product;
     }
 
-    public Set<Pack> getPacks() {
+    public List<Pack> getPacks() {
         return packs;
     }
 
-    public void setPacks(Set<Pack> packs) {
+    public void setPacks(List<Pack> packs) {
         this.packs = packs;
     }
 }
