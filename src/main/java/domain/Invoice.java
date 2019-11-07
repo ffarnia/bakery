@@ -12,6 +12,7 @@ public class Invoice {
     private BigDecimal totalPriceItem;
     private OrderItem orderItem;
     private Map<Pack,Long> packagingMap;
+    private String message;
 
     public Invoice(BigDecimal totalPriceItem, OrderItem orderItem, Map<Pack, Long> packagingMap) {
         this.totalPriceItem = totalPriceItem;
@@ -25,7 +26,16 @@ public class Invoice {
                 "orderItem=" + orderItem +
                 ", totalPriceItem=" + totalPriceItem +
                 ", packagingMap=" + packagingMap +
+                ", message=" + message +
                 '}';
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public BigDecimal getTotalPriceItem() {

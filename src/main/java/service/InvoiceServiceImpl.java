@@ -26,6 +26,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         List<Invoice> invoices = new ArrayList<>();
         for (OrderItem orderItem : orderItems) {
             invoices.add(calculateInvoiceDetail(orderItem));
+            System.out.println(calculateInvoiceDetail(orderItem));
         }
         return invoices;
     }
@@ -33,13 +34,22 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     private Invoice calculateInvoiceDetail(OrderItem orderItem) {
         int orderItemAmount = orderItem.getAmout();
+        if (orderItemAmount == 0) {
+            return generateInvaidOrder(MessageConstant.ORDER_AMOUNT_NOT_ENOUGH,orderItem);
+        }
         Product repositoryProduct = productService.findProductByCode(orderItem.getProduct().getCode());
+        if (repositoryProduct == null) {
+            return generateInvaidOrder(MessageConstant.PRODUCT_CODE_UNAVAILABLE, orderItem);
+        }
         repositoryProduct = productService.sortProductPacks(repositoryProduct);
         List<Pack> packList = packagingAlgorithm(repositoryProduct.getPacks(), orderItemAmount);
+        if (packList == null || packList.isEmpty()) {
+            return  generateInvaidOrder(MessageConstant.ORDER_AMOUNT_NOT_PACKAGING, orderItem);
+        }
+
         Map<Pack, Long> packCountMap = packList.stream().collect(Collectors.groupingBy(Function.<Pack>identity(), Collectors.counting()));
         BigDecimal totalPrice = packList.stream().map(Pack::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
         Invoice invoice = new Invoice(totalPrice, orderItem, packCountMap);
-        System.out.println(invoice);
         return invoice;
     }
 
@@ -70,5 +80,12 @@ public class InvoiceServiceImpl implements InvoiceService {
         } else {
             return packagingAlgorithm(productPacks.subList(1, productPacks.size()), orderItemAmount);
         }
+    }
+
+    private Invoice generateInvaidOrder(String informationMessage, OrderItem orderItem) {
+        Invoice invalidOrder = new Invoice(new BigDecimal("0"), orderItem, null);
+        invalidOrder.setMessage(informationMessage);
+        return invalidOrder;
+
     }
 }
