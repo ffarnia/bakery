@@ -1,54 +1,54 @@
 package domain;
 
 import java.math.BigDecimal;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
- * Created by Fazel on 11/6/2019.
+ * Created by Fazel on 11/7/2019.
  */
 public class Invoice {
 
-    private Integer totalAmount;
-    private Product product;
-    private List<Pack> packs;
+    private BigDecimal totalPriceItem;
+    private OrderItem orderItem;
+    private Map<Pack,Long> packagingMap;
 
-    public Invoice(Integer totalAmount, Product product) {
-        this.totalAmount = totalAmount;
-        this.product = product;
+    public Invoice(BigDecimal totalPriceItem, OrderItem orderItem, Map<Pack, Long> packagingMap) {
+        this.totalPriceItem = totalPriceItem;
+        this.orderItem = orderItem;
+        this.packagingMap = packagingMap;
     }
 
-    public void generateInvoice(Order order,Product product) {
-        List<OrderItem> orderItems =  order.getOrderItems();
-        for (OrderItem orderItem : orderItems) {
-            int amount = orderItem.getAmout();
-
-        }
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "orderItem=" + orderItem +
+                ", totalPriceItem=" + totalPriceItem +
+                ", packagingMap=" + packagingMap +
+                '}';
     }
 
-    public Integer getTotalAmount() {
-        return totalAmount;
+    public BigDecimal getTotalPriceItem() {
+        return totalPriceItem;
     }
 
-    public void setTotalAmount(Integer totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setTotalPriceItem(BigDecimal totalPriceItem) {
+        this.totalPriceItem = totalPriceItem;
     }
 
-    public Product getProduct() {
-        return product;
+    public OrderItem getOrderItem() {
+        return orderItem;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItem = orderItem;
     }
 
-    public List<Pack> getPacks() {
-        return packs;
+    public Map<Pack, Long> getPackagingMap() {
+        return packagingMap;
     }
 
-    public void setPacks(List<Pack> packs) {
-        this.packs = packs;
+    public void setPackagingMap(Map<Pack, Long> packagingMap) {
+        this.packagingMap = packagingMap;
     }
 }
