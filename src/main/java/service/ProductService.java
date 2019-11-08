@@ -5,7 +5,7 @@ import domain.Product;
 import java.util.List;
 
 /**
- * Created by Fazel on 11/6/2019.
+ * @author Created by Fazel on 11/6/2019.
  */
 public interface ProductService {
 

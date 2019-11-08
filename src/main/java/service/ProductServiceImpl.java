@@ -10,7 +10,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Created by Fazel on 11/7/2019.
+ * @author Created by Fazel on 11/7/2019.
+ * <p>Create products and store in repository</p>
  */
 public class ProductServiceImpl implements ProductService {
 
@@ -31,12 +32,22 @@ public class ProductServiceImpl implements ProductService {
         repositoryProducts.add(product);
     }
 
+    /**
+     * <p>Find a unique product base on given product code </p>
+     * @param productCode
+     * @return product else null
+     */
     @Override
     public Product findProductByCode(String productCode) {
         Optional<Product> productOptional = repositoryProducts.stream().filter(product -> product.getCode().equals(productCode)).findFirst();
         return productOptional.orElse(null);
     }
 
+    /**
+     * <p>Sort descending list of packs base on quantity of every product </p>
+     * @param product
+     * @return product with sorted packs
+     */
     @Override
     public Product sortProductPacks(Product product) {
         List<Pack> packList = product.getPacks();

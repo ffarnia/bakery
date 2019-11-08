@@ -1,7 +1,8 @@
 package domain;
 
 /**
- * Created by Fazel on 11/7/2019.
+ * @author Created by Fazel on 11/7/2019.
+ * <p>This class contains static information messages that makes messages more readable</p>
  */
 public class MessageConstant {
 

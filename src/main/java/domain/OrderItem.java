@@ -1,7 +1,8 @@
 package domain;
 
 /**
- * Created by Fazel on 11/6/2019.
+ * @author Created by Fazel on 11/6/2019.
+ * <p>This model entity is for creation of order details in final order</p>
  */
 public class OrderItem {
 

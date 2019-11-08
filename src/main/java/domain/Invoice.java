@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 /**
- * Created by Fazel on 11/7/2019.
+ * @author Created by Fazel on 11/7/2019.
+ * <p>This class is a model entity with required attributes and used in generation Invoice</p>
  */
 public class Invoice {
 

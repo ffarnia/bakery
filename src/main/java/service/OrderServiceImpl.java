@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Fazel on 11/8/2019.
+ * @author Created by Fazel on 11/8/2019.
+ * <p>Create order requested with list of orderItems</p>
  */
 public class OrderServiceImpl implements OrderService{
     @Override

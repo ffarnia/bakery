@@ -10,7 +10,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Created by Fazel on 11/7/2019.
+ * @author Created by Fazel on 11/7/2019.
+ * <p>This Service class generate invoice and calculate final invoice base on given order</p>
+ *
  */
 public class InvoiceServiceImpl implements InvoiceService {
 
@@ -20,6 +22,11 @@ public class InvoiceServiceImpl implements InvoiceService {
         this.productService = productService;
     }
 
+    /**
+     * <p>Generate invoice for given order</p>
+     * @param order
+     * @return List of Invoices List<Invoice>
+     */
     @Override
     public List<Invoice> generateInvoice(Order order) {
         List<OrderItem> orderItems = order.getOrderItems();
@@ -31,28 +38,37 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoices;
     }
 
-
+    /**
+     * <p>Calculate details of invoice for each orderItem of an order</p>
+     * @param orderItem
+     * @return invoice
+     */
     private Invoice calculateInvoiceDetail(OrderItem orderItem) {
-        int orderItemAmount = orderItem.getAmout();
+        int orderItemAmount = orderItem.getAmount();
         if (orderItemAmount == 0) {
-            return generateInvaidOrder(MessageConstant.ORDER_AMOUNT_NOT_ENOUGH,orderItem);
+            return generateInvalidOrder(MessageConstant.ORDER_AMOUNT_NOT_ENOUGH, orderItem);
         }
         Product repositoryProduct = productService.findProductByCode(orderItem.getProduct().getCode());
         if (repositoryProduct == null) {
-            return generateInvaidOrder(MessageConstant.PRODUCT_CODE_UNAVAILABLE, orderItem);
+            return generateInvalidOrder(MessageConstant.PRODUCT_CODE_UNAVAILABLE, orderItem);
         }
         repositoryProduct = productService.sortProductPacks(repositoryProduct);
         List<Pack> packList = packagingAlgorithm(repositoryProduct.getPacks(), orderItemAmount);
         if (packList == null || packList.isEmpty()) {
-            return  generateInvaidOrder(MessageConstant.ORDER_AMOUNT_NOT_PACKAGING, orderItem);
+            return  generateInvalidOrder(MessageConstant.ORDER_AMOUNT_NOT_PACKAGING, orderItem);
         }
-
         Map<Pack, Long> packCountMap = packList.stream().collect(Collectors.groupingBy(Function.<Pack>identity(), Collectors.counting()));
         BigDecimal totalPrice = packList.stream().map(Pack::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
         Invoice invoice = new Invoice(totalPrice, orderItem, packCountMap);
         return invoice;
     }
 
+    /**
+     *<p> Packaging every order amount into available packs of product in repository and should process the minimum number of packs</p>
+     * @param productPacks packs of every product
+     * @param orderItemAmount
+     * @return List<Pack>
+     */
     private List<Pack> packagingAlgorithm(List<Pack> productPacks, int orderItemAmount) {
         int remainItemAmount = orderItemAmount;
         if (productPacks.size() == 0) {
@@ -82,7 +98,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
     }
 
-    private Invoice generateInvaidOrder(String informationMessage, OrderItem orderItem) {
+    private Invoice generateInvalidOrder(String informationMessage, OrderItem orderItem) {
         Invoice invalidOrder = new Invoice(new BigDecimal("0"), orderItem, null);
         invalidOrder.setMessage(informationMessage);
         return invalidOrder;
