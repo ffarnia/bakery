@@ -1,26 +1,20 @@
 package domain;
 
-import java.util.List;
-
 /**
  * Created by Fazel on 11/6/2019.
  */
 public class OrderItem {
 
-    private Integer amout;
+    private Integer amount;
     private Product product;
 
-    public OrderItem(Integer amout, Product product) {
-        this.amout = amout;
+    public OrderItem(Integer amount, Product product) {
+        this.amount = amount;
         this.product = product;
     }
 
-    public Integer getAmout() {
-        return amout;
-    }
-
-    public void setAmout(Integer amout) {
-        this.amout = amout;
+    public Integer getAmount() {
+        return amount;
     }
 
     public Product getProduct() {
@@ -34,8 +28,27 @@ public class OrderItem {
     @Override
     public String toString() {
         return "OrderItem{" +
-                "amout=" + amout +
+                "amount=" + amount +
                 ", product=" + product.getCode() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OrderItem)) return false;
+
+        OrderItem orderItem = (OrderItem) o;
+
+        if (!getAmount().equals(orderItem.getAmount())) return false;
+        return getProduct().getCode().equals(orderItem.getProduct().getCode());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getAmount().hashCode();
+        result = 31 * result + getProduct().hashCode();
+        return result;
     }
 }

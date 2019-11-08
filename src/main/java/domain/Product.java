@@ -26,16 +26,8 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCode() {
         return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public List<Pack> getPacks() {
@@ -53,5 +45,26 @@ public class Product {
                 ", code='" + code + '\'' +
                 ", packs=" + packs +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+
+        Product product = (Product) o;
+
+        if (!getName().equals(product.getName())) return false;
+        if (!getCode().equals(product.getCode())) return false;
+        return getPacks().equals(product.getPacks());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getCode().hashCode();
+        result = 31 * result + getPacks().hashCode();
+        return result;
     }
 }

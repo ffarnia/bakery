@@ -19,16 +19,8 @@ public class Pack {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
     public BigDecimal getPrice() {
         return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
     }
 
     @Override
@@ -37,5 +29,24 @@ public class Pack {
                 "quantity=" + quantity +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pack)) return false;
+
+        Pack pack = (Pack) o;
+
+        if (!getQuantity().equals(pack.getQuantity())) return false;
+        return getPrice().equals(pack.getPrice());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getQuantity().hashCode();
+        result = 31 * result + getPrice().hashCode();
+        return result;
     }
 }

@@ -15,8 +15,4 @@ public class Order {
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
 }
