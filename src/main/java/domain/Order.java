@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author Created by Fazel on 11/6/2019.
- * <p>This model entity is for request order with a list of Order Items</p>
+ *         <p>This model entity is for request order with a list of Order Items</p>
  */
 public class Order {
     private List<OrderItem> orderItems;

@@ -11,8 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Created by Fazel on 11/7/2019.
- * <p>This Service class generate invoice and calculate final invoice base on given order</p>
- *
+ *         <p>This Service class generate invoice and calculate final invoice base on given order</p>
  */
 public class InvoiceServiceImpl implements InvoiceService {
 
@@ -24,6 +23,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     /**
      * <p>Generate invoice for given order</p>
+     *
      * @param order
      * @return List of Invoices List<Invoice>
      */
@@ -33,13 +33,13 @@ public class InvoiceServiceImpl implements InvoiceService {
         List<Invoice> invoices = new ArrayList<>();
         for (OrderItem orderItem : orderItems) {
             invoices.add(calculateInvoiceDetail(orderItem));
-            System.out.println(calculateInvoiceDetail(orderItem));
         }
         return invoices;
     }
 
     /**
      * <p>Calculate details of invoice for each orderItem of an order</p>
+     *
      * @param orderItem
      * @return invoice
      */
@@ -55,7 +55,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         repositoryProduct = productService.sortProductPacks(repositoryProduct);
         List<Pack> packList = packagingAlgorithm(repositoryProduct.getPacks(), orderItemAmount);
         if (packList == null || packList.isEmpty()) {
-            return  generateInvalidOrder(MessageConstant.ORDER_AMOUNT_NOT_PACKAGING, orderItem);
+            return generateInvalidOrder(MessageConstant.ORDER_AMOUNT_NOT_PACKAGING, orderItem);
         }
         Map<Pack, Long> packCountMap = packList.stream().collect(Collectors.groupingBy(Function.<Pack>identity(), Collectors.counting()));
         BigDecimal totalPrice = packList.stream().map(Pack::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -64,8 +64,9 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     /**
-     *<p> Packaging every order amount into available packs of product in repository and should process the minimum number of packs</p>
-     * @param productPacks packs of every product
+     * <p> Packaging every order amount into available packs of product in repository and should process the minimum number of packs</p>
+     *
+     * @param productPacks    packs of every product
      * @param orderItemAmount
      * @return List<Pack>
      */

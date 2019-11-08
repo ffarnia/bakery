@@ -1,11 +1,10 @@
 package domain;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Created by Fazel on 11/6/2019.
- * <p>This model entity provide information about available products in repository and can be chosen in Oredrs</p>
+ *         <p>This model entity provide information about available products in repository and can be chosen in Oredrs</p>
  */
 public class Product {
 

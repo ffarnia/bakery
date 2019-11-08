@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Created by Fazel on 11/7/2019.
- * <p>Create products and store in repository</p>
+ *         <p>Create products and store in repository</p>
  */
 public class ProductServiceImpl implements ProductService {
 
@@ -34,6 +34,7 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * <p>Find a unique product base on given product code </p>
+     *
      * @param productCode
      * @return product else null
      */
@@ -45,13 +46,14 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * <p>Sort descending list of packs base on quantity of every product </p>
+     *
      * @param product
      * @return product with sorted packs
      */
     @Override
     public Product sortProductPacks(Product product) {
         List<Pack> packList = product.getPacks();
-        List<Pack> sortedPacks= packList.stream().sorted(Comparator.comparingInt(Pack::getQuantity).reversed()).collect(Collectors.toList());
+        List<Pack> sortedPacks = packList.stream().sorted(Comparator.comparingInt(Pack::getQuantity).reversed()).collect(Collectors.toList());
         product.setPacks(sortedPacks);
         return product;
     }

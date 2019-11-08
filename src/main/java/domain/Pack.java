@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 /**
  * @author Created by Fazel on 11/6/2019.
- * <p>This model entity is for packing every product into desire packages</p>
+ *         <p>This model entity is for packing every product into desire packages</p>
  */
 public class Pack {
 
